@@ -15,9 +15,13 @@ A simple way to call it in Edit Form.
     <CKEditorBlazor Id="MyEditor" @bind-Value=@editorOptions.InitialText></CKEditorBlazor>
 </EditForm>
 
-# Configure your own api url in "CKEditorInterop.js" at line # 35
+# Configure UrlToPostImage and enjoy your images to upload directly. 
 
-xhr.open('POST', 'http://localhost:44301/api/q/Upload', true);
-xhr.responseType = 'json';
+An advance way to configure url on ckeditor5-blazor
 
-You can change responseType if want and also post your own url to upload images.
+<EditForm Model="@editorOptions">
+    <CKEditorBlazor Id="MyEditor1" 
+                    @bind-Value=@editorOptions.InitialText 
+                    UrlToPostImage="http://localhost:44301/api/qaiser/Upload">
+    </CKEditorBlazor>
+</EditForm>
