@@ -1,0 +1,22 @@
+﻿@page "/"
+@using ckeditor5blazor.Data
+
+<h1>Welcome to My CKEditor Advance Version</h1>
+
+<EditForm Model="@editorOptions">
+    <CKEditorBlazor Id="MyEditor" @bind-Value=@editorOptions.InitialText></CKEditorBlazor>
+</EditForm>
+
+
+@code {
+    EditorOptions editorOptions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        editorOptions = new EditorOptions();
+        editorOptions.InitialText = "Welcome to Qaiser Mehmood github editor5-blazor app";
+        var txt = await Task.Run(() => 1);
+    }
+}
+
+
