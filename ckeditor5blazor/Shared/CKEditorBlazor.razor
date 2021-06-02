@@ -16,12 +16,15 @@
         set => _id = value;
     }
 
+    [Parameter]
+    public string UrlToPostImage { get; set; }
+
     readonly string uid = Guid.NewGuid().ToString().ToLower().Replace("-", "");
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-            await JSRuntime.InvokeVoidAsync("CKEditorInterop.init", Id, DotNetObjectReference.Create(this));
+            await JSRuntime.InvokeVoidAsync("CKEditorInterop.init", Id, UrlToPostImage, DotNetObjectReference.Create(this));
 
         await base.OnAfterRenderAsync(firstRender);
     }

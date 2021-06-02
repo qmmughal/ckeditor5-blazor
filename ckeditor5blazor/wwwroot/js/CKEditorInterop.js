@@ -1,5 +1,6 @@
 ﻿window.CKEditorInterop = (() => {
     const editors = {};
+    let uploadToUrl = 'http://localhost:44301/api/q/Upload';
 
     class MyUploadAdapter {
         constructor(loader) {
@@ -32,7 +33,7 @@
             // integration to choose the right communication channel. This example uses
             // a POST request with JSON as a data structure but your configuration
             // could be different.
-            xhr.open('POST', 'http://localhost:44301/api/q/Upload', true);
+            xhr.open('POST', uploadToUrl, true);
             xhr.responseType = 'json';
         }
 
@@ -104,7 +105,7 @@
     }
 
     return {
-        init(id, dotNetReference) {
+        init(id, uploadImageUrl, dotNetReference) {
             ClassicEditor
                 .create(document.getElementById(id), {
                     toolbar: {
@@ -161,6 +162,9 @@
                     });
                 })
                 .catch(error => console.error(error));
+
+            if (uploadImageUrl !== null)
+                uploadToUrl = uploadImageUrl;
         },
         destroy(id) {
             editors[id].destroy()

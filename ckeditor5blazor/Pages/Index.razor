@@ -4,8 +4,12 @@
 <h1>Welcome to My CKEditor Advance Version</h1>
 
 <EditForm Model="@editorOptions">
-    <CKEditorBlazor Id="MyEditor" @bind-Value=@editorOptions.InitialText></CKEditorBlazor>
+    <CKEditorBlazor Id="MyEditor1" 
+                    @bind-Value=@editorOptions.InitialText 
+                    UrlToPostImage="http://localhost:44301/api/qaiser/Upload">
+    </CKEditorBlazor>
 </EditForm>
+
 
 @code {
     EditorOptions editorOptions;
