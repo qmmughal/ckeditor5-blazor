@@ -1,5 +1,5 @@
 # ckeditor5-blazor
-Its a working version of ckeditor5 with blazor, hopefully help you to use it quickly in your own application for blazor.
+Its a working version of ckeditor5 with blazor, hopefully will help you to use it quickly in your own application for blazor.
 
 In this solution i am implementing the ckeditor5 with custom upload adapter, along with all available options of ckeditor.
 You can easily set your own url to upload to api and return a json response for url to insert into editor for images. 
