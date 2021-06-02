@@ -14,3 +14,10 @@ A simple way to call it in Edit Form.
 <EditForm Model="@editorOptions">
     <CKEditorBlazor Id="MyEditor" @bind-Value=@editorOptions.InitialText></CKEditorBlazor>
 </EditForm>
+
+# Configure your own api url in "CKEditorInterop.js" at line # 35
+
+xhr.open('POST', 'http://localhost:44301/api/q/Upload', true);
+xhr.responseType = 'json';
+
+You can change responseType if want and also post your own url to upload images.
