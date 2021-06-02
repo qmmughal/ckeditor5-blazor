@@ -11,17 +11,18 @@ You are going to implement and enable a custom upload adapter. The adapter will 
 
 A simple way to call it in Edit Form.
 
-<EditForm Model="@editorOptions">
-    <CKEditorBlazor Id="MyEditor" @bind-Value=@editorOptions.InitialText></CKEditorBlazor>
-</EditForm>
+`<EditForm Model="@editorOptions">
+    <CKEditorBlazor Id="MyEditor" @bind-Value=@editorOptions.InitialText>
+    </CKEditorBlazor>
+</EditForm>`
 
 # Configure UrlToPostImage and enjoy your images to upload directly. 
 
 An advance way to configure url on ckeditor5-blazor
 
-<EditForm Model="@editorOptions">
+`<EditForm Model="@editorOptions">
     <CKEditorBlazor Id="MyEditor1" 
                     @bind-Value=@editorOptions.InitialText 
                     UrlToPostImage="http://localhost:44301/api/qaiser/Upload">
     </CKEditorBlazor>
-</EditForm>
+</EditForm>`
