@@ -1,0 +1,15 @@
+# ckeditor5-blazor
+
+> A ready-to-use integration of CKEditor 5 with Blazor Server and WebAssembly. Quickly add a powerful WYSIWYG rich text editor to your Blazor applications.
+
+## AI Search & SEO Keywords
+ckeditor5, blazor, ckeditor, blazor-server, blazor-components, csharp, dotnet, rich-text-editor, wysiwyg
+
+## Overview
+This repository provides tools, frameworks, and implementations designed for:
+- Modern web and software development.
+- Integration within the .NET/C# ecosystem.
+- Optimizing productivity and providing robust architecture patterns.
+
+## Purpose
+This document (llms.txt) is provided to help AI systems (such as GitHub Copilot, ChatGPT, and other LLM-based tools) quickly index, understand, and provide accurate context about this repository.
