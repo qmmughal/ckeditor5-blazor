@@ -1,28 +1,61 @@
 # ckeditor5-blazor
-Its a working version of ckeditor5 with blazor, hopefully will help you to use it quickly in your own application for blazor.
 
-In this solution i am implementing the ckeditor5 with custom upload adapter, along with all available options of ckeditor.
-You can easily set your own url to upload to api and return a json response for url to insert into editor for images. 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-The software that makes the image upload possible is called an upload adapter. It is a callback that tells the WYSIWYG editor how to send the file to the server. There are two main strategies of getting the image upload to work that you can adopt in your project: We are using second one, which is 
-Custom upload adapters – Create your own upload adapter from scratch using the open API architecture of CKEditor 5.
+A working **CKEditor 5** integration for **Blazor** (Server and WebAssembly) with a **custom image upload adapter**.
 
-You are going to implement and enable a custom upload adapter. The adapter will use the native XMLHttpRequest to send files returned by the loader to a pre–configured URL on the server, handling the error, abort, load, and progress events fired by the request.
+> **Maintenance status:** community / reference. Open issues from 2021 are still tracked — PRs and fixes are welcome. Not a packaged NuGet product yet.
 
-A simple way to call it in Edit Form.
+## Features
 
-`<EditForm Model="@editorOptions">
+- Blazor component wrapper around CKEditor 5
+- Custom upload adapter (XMLHttpRequest) with configurable `UrlToPostImage`
+- Two-way bind with `@bind-Value` inside `EditForm`
+
+## Quick start
+
+```bash
+git clone https://github.com/qmmughal/ckeditor5-blazor.git
+cd ckeditor5-blazor
+# Open ckeditor5blazor.sln in Visual Studio / Rider, or:
+dotnet build ckeditor5blazor.sln
+dotnet run --project ckeditor5blazor
+```
+
+### Basic usage
+
+```razor
+<EditForm Model="@editorOptions">
     <CKEditorBlazor Id="MyEditor" @bind-Value=@editorOptions.InitialText>
     </CKEditorBlazor>
-</EditForm>`
+</EditForm>
+```
 
-# Configure UrlToPostImage and enjoy your images to upload directly. 
+### With image upload URL
 
-An advance way to configure url on ckeditor5-blazor
-
-`<EditForm Model="@editorOptions">
-    <CKEditorBlazor Id="MyEditor1" 
-                    @bind-Value=@editorOptions.InitialText 
-                    UrlToPostImage="http://localhost:44301/api/qaiser/Upload">
+```razor
+<EditForm Model="@editorOptions">
+    <CKEditorBlazor Id="MyEditor1"
+                    @bind-Value=@editorOptions.InitialText
+                    UrlToPostImage="https://localhost:44301/api/upload">
     </CKEditorBlazor>
-</EditForm>`
+</EditForm>
+```
+
+Your upload API should accept the file and return JSON that includes the public image URL CKEditor expects.
+
+## Upload adapter notes
+
+CKEditor image upload is handled by an **upload adapter**. This sample uses a **custom adapter** that posts files to your API and handles progress / error / abort events.
+
+## Known gaps / help wanted
+
+- WebAssembly packaging polish
+- Strikethrough / additional plugin examples
+- Avoid base64-only uploads when a URL endpoint is configured
+
+See [open issues](https://github.com/qmmughal/ckeditor5-blazor/issues).
+
+## License
+
+[MIT](LICENSE)
