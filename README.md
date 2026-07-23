@@ -4,7 +4,7 @@
 
 A working **CKEditor 5** integration for **Blazor** (Server and WebAssembly) with a **custom image upload adapter**.
 
-> **Maintenance status:** community / reference. Open issues from 2021 are still tracked — PRs and fixes are welcome. Not a packaged NuGet product yet.
+> **Maintenance status:** community / reference. Open issues from 2021 are still tracked — PRs and fixes are welcome. Not a packaged NuGet product yet — see [Support this project](#support-this-project) below.
 
 ## Features
 
@@ -74,6 +74,10 @@ CKEditor image upload is handled by an **upload adapter**. This sample uses a **
 - Paste/`imageInsert` can still embed base64 images even when `UrlToPostImage` is set
 
 See [open issues](https://github.com/qmmughal/ckeditor5-blazor/issues).
+
+## Support this project
+
+This is the most-used repo in the account (multi-year issue history, real adopters) but it isn't a packaged NuGet product yet. A `FUNDING.yml` is in place so a GitHub Sponsors button will appear here once [sponsors is enabled](https://github.com/qmmughal) on the account — sponsorship is earmarked for turning this into a maintained, versioned NuGet release instead of a clone-and-copy sample.
 
 ## License
 
