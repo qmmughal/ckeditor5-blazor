@@ -22,6 +22,25 @@ dotnet build ckeditor5blazor.sln
 dotnet run --project ckeditor5blazor
 ```
 
+### Sample image upload API
+
+This repo now includes `Controllers/UploadController.cs` — a minimal endpoint the custom adapter can call:
+
+- **Method / route:** `POST /api/Upload`
+- **Form field:** `upload` (multipart)
+- **Response JSON:** `{ "url": "https://host/uploads/filename.ext" }`
+
+The demo page points `UrlToPostImage` at `/api/Upload`. Files are saved under `wwwroot/uploads/`.
+
+```csharp
+[HttpPost]
+public async Task<IActionResult> Post(IFormFile upload)
+{
+    // save file under wwwroot/uploads, then:
+    return Ok(new { url = $"{Request.Scheme}://{Request.Host}/uploads/{storedName}" });
+}
+```
+
 ### Basic usage
 
 ```razor
@@ -37,7 +56,7 @@ dotnet run --project ckeditor5blazor
 <EditForm Model="@editorOptions">
     <CKEditorBlazor Id="MyEditor1"
                     @bind-Value=@editorOptions.InitialText
-                    UrlToPostImage="https://localhost:44301/api/upload">
+                    UrlToPostImage="/api/Upload">
     </CKEditorBlazor>
 </EditForm>
 ```
@@ -50,9 +69,9 @@ CKEditor image upload is handled by an **upload adapter**. This sample uses a **
 
 ## Known gaps / help wanted
 
-- WebAssembly packaging polish
-- Strikethrough / additional plugin examples
-- Avoid base64-only uploads when a URL endpoint is configured
+- **WebAssembly:** sample is Blazor Server today; a dedicated WASM host is not in the solution yet
+- **Strikethrough:** not included in the bundled `ckeditor.js` ClassicEditor build — needs a custom CKEditor rebuild + toolbar item
+- Paste/`imageInsert` can still embed base64 images even when `UrlToPostImage` is set
 
 See [open issues](https://github.com/qmmughal/ckeditor5-blazor/issues).
 
